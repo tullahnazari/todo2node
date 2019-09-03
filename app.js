@@ -22,10 +22,22 @@ bookRouter.route('/books')
       return res.json(books);
     });
   });
+
+  bookRouter.route('/books/:bookId')
+//find book by id
+  .get((req, res) => {
+    
+    Book.findById(req.params.bookId, (err, book) => {
+      if (err) {
+        return res.send(err);
+      }
+      return res.json(book);
+    });
+  });
 app.use('/api', bookRouter);
 
 app.get('/', (req, res) => {
-  res.send('Welcome to my Nodemon API');
+  
 });
 
 app.listen(port, () => {
