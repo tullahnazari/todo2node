@@ -9,6 +9,7 @@ const Book = require('./models/bookModel');
 
 
 bookRouter.route('/books')
+//making query string param
   .get((req, res) => {
     const query = {};
     if (req.query.genre) {
